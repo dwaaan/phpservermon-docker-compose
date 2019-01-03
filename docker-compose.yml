@@ -1,0 +1,33 @@
+version: "3"
+services:
+
+ db:
+  image: mariadb:10
+  container_name: phpservermon-mariadb
+  hostname: mariadb
+  restart: always
+  volumes:
+   - ./mariadb:/var/lib/mysql
+  environment:
+   - MYSQL_ROOT_PASSWORD=passwordhere
+   - MYSQL_DATABASE=phpservermon
+   - MYSQL_USER=phpservermon
+   - MYSQL_PASSWORD=passwordhere
+
+ phpservermon:
+  image: benoitpodwinski/phpservermon
+  container_name: phpservermon
+  hostname: phpservermon
+  restart: always
+  environment:
+   - PSM_BASE_URL=http://yoururl.com/
+   - PSM_DB_HOST=db
+   - PSM_DB_NAME=phpservermon
+   - PSM_DB_USER=phpservermon
+   - PSM_DB_PASS=passwordhere
+   - PSM_DB_PREFIX=Y8ze_
+   - PHP_TIMEZONE=Australia/Perth
+  depends_on:
+   - db
+  ports:
+   - 8082:80
