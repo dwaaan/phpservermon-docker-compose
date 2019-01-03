@@ -1,5 +1,7 @@
 # phpservermon-docker-compose
 
+Docker Compose file for PHP Server Monitor (from https://www.phpservermonitor.org/)
+
 
 ## 1. Clone Repo
 - git clone https://github.com/dwaaan/phpservermon-docker-compose
